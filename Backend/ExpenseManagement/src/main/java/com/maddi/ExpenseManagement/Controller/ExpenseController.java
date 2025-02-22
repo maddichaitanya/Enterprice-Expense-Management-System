@@ -29,6 +29,11 @@ public class ExpenseController {
             }
 
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllExpenses(){
+        return ResponseEntity.ok(expenseService.getAllExpenses());
+    }
 }
 
 
