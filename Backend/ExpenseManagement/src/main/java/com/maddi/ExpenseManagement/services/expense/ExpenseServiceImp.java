@@ -28,6 +28,7 @@ public class ExpenseServiceImp implements ExpenseService{
         expense.setAmount(expenseDTO.getAmount());
         expense.setCategory(expenseDTO.getCategory());
         expense.setDescription(expenseDTO.getDescription());
+
         return expenseRepository.save(expense);
     }
 
