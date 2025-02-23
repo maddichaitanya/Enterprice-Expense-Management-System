@@ -29,7 +29,7 @@ public class Income {
     private String description;
 
 
-    public IncomeDTO getIncomeDto(){
+public IncomeDTO getIncomeDto(){
         IncomeDTO incomeDTO=new IncomeDTO();
 
         incomeDTO.setId(id);
