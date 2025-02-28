@@ -4,6 +4,7 @@ package com.maddi.ExpenseManagement.Controller;
 import com.maddi.ExpenseManagement.dto.IncomeDTO;
 import com.maddi.ExpenseManagement.entity.Income;
 import com.maddi.ExpenseManagement.services.income.IncomeService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,17 @@ public class IncomeController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateIncome(@PathVariable Long id,@PathVariable IncomeDTO dto){
+        try{
+            return ResponseEntity.ok(incomeService.updateIncome(id,dto));
+        }
+        catch (EntityNotFoundException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong ");
+        }
+    }
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllIncomes(){
