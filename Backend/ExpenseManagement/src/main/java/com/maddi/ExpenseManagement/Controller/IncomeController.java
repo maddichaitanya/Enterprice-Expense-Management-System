@@ -31,8 +31,16 @@ public class IncomeController {
         }
     }
 
+
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllIncomes(){
+        return ResponseEntity.ok(incomeService.getAllIncomes());
+    }
+
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateIncome(@PathVariable Long id,@PathVariable IncomeDTO dto){
+    public ResponseEntity<?> updateIncome(@PathVariable Long id,@RequestBody IncomeDTO dto){
         try{
             return ResponseEntity.ok(incomeService.updateIncome(id,dto));
         }
@@ -42,10 +50,4 @@ public class IncomeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong ");
         }
     }
-
-    @GetMapping("/all")
-    public ResponseEntity<?> getAllIncomes(){
-        return ResponseEntity.ok(incomeService.getAllIncomes());
-    }
-
 }

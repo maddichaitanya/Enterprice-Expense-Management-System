@@ -39,7 +39,7 @@ public class IncomeServiceImpl  implements IncomeService{
 
         }
         else {
-            throw new EntityNotFoundException("Invalid id please check ");
+            throw new EntityNotFoundException("Invalid id please check " + id);
         }
     }
 
