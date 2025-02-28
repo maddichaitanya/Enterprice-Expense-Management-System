@@ -51,6 +51,18 @@ public class IncomeServiceImpl  implements IncomeService{
                 .collect(Collectors.toList());
 
     }
+
+
+    public Income getIncomeById(Long id){
+        Optional<Income> optionalIncome=incomeRepository.findById(id);
+        if(optionalIncome.isPresent()){
+            return optionalIncome.get();
+
+        }
+        else {
+            throw new EntityNotFoundException("Enter correct id");
+        }
+    }
 }
 
 
